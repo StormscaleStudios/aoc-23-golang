@@ -27,10 +27,10 @@ func extract_games(line string) (index int, sets []string) {
 
 func validate_set(set string) bool {
 	entries := strings.Split(set, ",")
-	var colour_limits = map[string]int {
-		"red":12,
-		"green":13,
-		"blue":14,
+	var colour_limits = map[string]int{
+		"red":   12,
+		"green": 13,
+		"blue":  14,
 	}
 
 	fmt.Println(set)
@@ -49,7 +49,7 @@ func validate_set(set string) bool {
 
 func parse_line(line string) (value *int, is_valid bool) {
 	game, sets := extract_games(line)
-	
+
 	for i := 0; i < len(sets); i++ {
 		set := sets[i]
 		is_valid := validate_set(set)
@@ -121,7 +121,7 @@ func get_minima_from_line(line string) (v minima) {
 }
 
 func calculate_power(v minima) int {
-	return v.red * v.green * v.blue 
+	return v.red * v.green * v.blue
 
 }
 
@@ -142,7 +142,7 @@ func part_two(lines []string) int {
 	return total
 }
 
-func main()  {
+func main() {
 	filename := "input"
 
 	content, err := os.ReadFile(filename)

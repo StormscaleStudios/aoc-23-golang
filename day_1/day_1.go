@@ -11,10 +11,10 @@ import (
 
 func parse_line(line string) (value int, err error) {
 	numbers := "1234567890"
-	
+
 	first_index := strings.IndexAny(line, numbers)
 	last_index := strings.LastIndexAny(line, numbers)
-	
+
 	if (first_index == -1) || (last_index == -1) {
 		return -1, errors.New("Unable to extract value from string")
 	}
@@ -39,7 +39,7 @@ func part_one(lines []string) int {
 		}
 		fmt.Println(data)
 		codes = append(codes, data)
-	} 
+	}
 
 	var code_sum int
 	for i := 0; i < len(codes); i++ {
@@ -57,7 +57,7 @@ func match_values(line string, index int) (match *string, err error) {
 		if (index + len(number)) > len(line) {
 			continue
 		}
-		line_slice := line[index:index + len(number)]
+		line_slice := line[index : index+len(number)]
 
 		if line_slice == number {
 			return &line_slice, nil
@@ -98,7 +98,7 @@ func convert_to_value(match string) string {
 }
 
 func parse_line_complex(line string) (value *int, err error) {
-	
+
 	fmt.Println(line)
 
 	var matches []string
@@ -112,19 +112,19 @@ func parse_line_complex(line string) (value *int, err error) {
 	}
 
 	fmt.Println(matches)
-	
+
 	if len(matches) == 0 {
 		return nil, errors.New("No matches found!")
 	}
 
 	first_match := matches[0]
-	last_match := matches[len(matches) - 1]
+	last_match := matches[len(matches)-1]
 
 	fmt.Printf("%s %s\n", first_match, last_match)
 
 	first_code := convert_to_value(first_match)
 	last_code := convert_to_value(last_match)
-	
+
 	code := fmt.Sprintf("%s%s", first_code, last_code)
 	i, err := strconv.Atoi(code)
 	if err != nil {
@@ -143,7 +143,7 @@ func part_two(lines []string) int {
 		}
 		fmt.Println(data)
 		codes = append(codes, *data)
-	} 
+	}
 
 	var code_sum int
 	for i := 0; i < len(codes); i++ {
@@ -171,5 +171,3 @@ func main() {
 	fmt.Printf("Answer to part Two is '%d'\n", part_two_output)
 
 }
-
-
